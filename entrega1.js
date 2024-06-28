@@ -2,7 +2,6 @@
     Sera un e.commerce ERP en donde se venderan un listado de productos(8)
     los productos seran los  modulos del ERP algunos con precios similares y otros con precios iguales
     en donde la persona podra elegir si pagarlo en cuotas o decontado..
-    si el sistema es vendido a estranjeros o nacionales tienen distintos % de interes.
 */
 //variables globales
 let texto;
