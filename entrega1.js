@@ -29,6 +29,7 @@ let interes3 = 1.1;
 let interes6 = 1.15;
 let interes9 = 1.18;
 let interes12 = 1.2;
+let mensaje = alert(`Por favor ingresar un dato valido`);
 
 
 alert("Bienevenidos a X");
@@ -91,7 +92,7 @@ if(texto === "si"){
                 respuesta.toLowerCase();
                 if(respuesta === "no"){
                     console.log(`perfecto puede pasar por el carrito de compra para efectuar el pago de ${venta}$`);
-                }else{
+                }else if (respuesta === "si"){
                     cuotas = Number(prompt(`En cuantas cuotas desea colocarlas? opciones:
                         (3 - 6 - 9 - 12)`));
                         let calculoCuotas = (cuotas)=> venta = venta/cuotas;
@@ -104,13 +105,19 @@ if(texto === "si"){
                         }else if(cuotas === 9){
                             let resultadoTotal = calculoCuotas(cuotas) *interes9;
                             alert(`Sus cuotas quedaron en 9 cuotas de ${resultadoTotal}$ con intereses incluidos`);
-                        }else{
+                        }else if(cuotas === 12){
                             let resultadoTotal = calculoCuotas(cuotas) * interes12
                             alert(`Sus cuotas quedaron en 12 cuotas de ${resultadoTotal}$ con intereses incluidos`);
+                        }else{
+                            mensaje;
                         }
+                }else{
+                    mensaje;
                 }
-            }else{
+            }else if (texto === "no"){
                 console.log(`ok su venta ha sido cancelada`);
+            }else{
+                mensaje;
             }
         }else{
             venta = 0
