@@ -6,3 +6,72 @@
 h1{
     color: chocolate;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.productContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.productCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid navy;
+    width: 250px;
+    height: 400px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.botonesTarjeta{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+.botonesTarjeta button{
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+.cartContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formulario{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+}
+.formulario input{
+    background-color: steelblue;
+    color: black;
+}
+input[type="text"]::placeholder {
+    color: black;
+}
+input[type="number"]::placeholder {
+    color: black;
+}
+input[type="email"]::placeholder {
+    color: black;
+}
