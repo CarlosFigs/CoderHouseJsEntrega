@@ -3,75 +3,183 @@
     margin: 0;
     box-sizing: border-box;
 }
-h1{
-    color: chocolate;
+::selection{
+    background-color: #4B0082;
+    color: #FFDD57;
 }
-a{
-    text-decoration: none;
-    color: black;
+body{
+    background-color: #5F5F5F;
+}
+header{
+    background-color: #4B0082;
+    color:#FFDD57;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+h1{
+    color:#FFDD57;
+}
+nav {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
 }
 
-.productContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
+nav a {
+    color: #FFDD57;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
 }
-.productCard{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid navy;
-    width: 250px;
-    height: 400px;
-    border-radius: 20px;
-    padding: 10px;
-    margin: 10px;
+
+nav a:hover {
+    color:  #5F5F5F;
 }
-.botonesTarjeta{
-    display: flex;
-    margin-top: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
+button {
+    background-color: #4B0082;
+    color: #FFDD57;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.8s;
 }
-.botonesTarjeta button{
-    width: 20px;
-    height: 20px;
-    margin: 5px;
-}
-.cartContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-.formContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.formulario{
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 5px;
-}
-.formulario input{
-    background-color: steelblue;
-    color: black;
+
+button:hover {
+    background-color: #FFDD57;
+    color: #4B0082;
 }
 input[type="text"]::placeholder {
+    color:#FFDD57;
+}
+input{
+    color: #FFDD57;
+    height: 37px;
+    width: 300px;
+    background-color: #4B0082;
+}
+/*? AQUI EMPIEZA EL CSS DE LAS SECTION PRINCIPALES*/
+
+.sectionBusqueda{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.sectionBusqueda div{
+    padding: 5px;
+    gap: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sectionCreacion{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.sectionCreacion div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+/*! AQUI EMPIEZA EL CSS DEL JS E */
+.pokeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+}
+.pokeContainer2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+    margin-top: 30px;
+    height: 350px;
+}
+.teamContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+}
+.teamDiv{
+    margin-top: 20px;
+    padding: 10px;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pokeCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 5px;
+}
+.pokeCard h3{
     color: black;
 }
-input[type="number"]::placeholder {
+.pokeCard img{
+    width: 120px;
+    height: 120px;
+}
+.pokedex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 5px;
+}
+.pokedex h3{
+    color: black;
+    font-size: 25px;
+}
+.pokedex p{
+    background-color: black;
+    color: #FFDD57;
+}
+.pokedex img{
+    width: 250px;
+    height: 250px;
+}
+.div-imagen{
+    display: flex;
+    flex-direction: column;
+}
+.pokeCardRandom{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+.pokeCardRandom h3{
     color: black;
 }
-input[type="email"]::placeholder {
-    color: black;
+.pokeCardRandom li{
+    list-style: none;
+    color:black;
+}
+.pokeCardRandom img{
+    width: 120px;
+    height: 120px;
+}
+#agregar{
+    display:none;
 }

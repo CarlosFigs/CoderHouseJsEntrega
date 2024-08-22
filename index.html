@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ENTREGA FINAL</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
     <header>
-        <h1>Tercera entrega CoderHouse</h1>
-        <a href="./cart.html">Carrito<img src="" alt=""></a>
+        <h1>POKEDEX</h1>
     </header>
+    <nav>
+        <a href="./pokemons.html">Equipos de pokemons<img src="" alt=""></a>
+    </nav>
     <main>
-        <input type="text" placeholder="Buscar Productos" id="inputSearch">
-        <button type="button" id="search">Buscar</button>
-        <div class="productContainer"></div>
+        <section class="sectionBusqueda">
+            <div>
+                <input type="text" placeholder="Buscar Pokemon" id="inputSearch">
+                <button type="button" id="buscar">Buscar</button>
+            </div>
+            <div>
+                <button type="button" id="retroceso"> <<< </button>
+                <button type="button" id="adelantar"> >>> </button>
+            </div>
+            <div class="pokeContainer"></div>
+        </section>
+        <section class="sectionCreacion">
+            <div>
+                <button type="button" id="random">Random</button>
+                <button type="button" id="equipo">Generar equipo</button>
+                <button type="button" id="agregar">Agregar equipo</button>
+            </div>
+
+            <div class="pokeContainer2"></div>
+        </section>
     </main>
-    <script src="./entrega3.js"></script>
+    <script src="./entregaFinal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>
