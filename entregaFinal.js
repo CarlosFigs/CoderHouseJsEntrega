@@ -216,7 +216,8 @@ const agregarEquipo = ()=>{
         } else {
             // Agregar el equipo si no existe y guardar en localStorage
             allTeams.push(team);
-            const teamJson = JSON.stringify(allTeams);
+            let combined = [...allTeams,...allTeams2]
+            const teamJson = JSON.stringify(combined);
             localStorage.setItem("pokemonTeam", teamJson);
             refrescarNumeroEquipos();
             
@@ -248,8 +249,9 @@ const agregarPokemon = async (id)=>{
             allTeams2.push(team2);  // Agregar el equipo si no existe
             dato = "Equipo añadido";
             tosty(dato);
-            const allTeamsJson = JSON.stringify(allTeams2);
-            localStorage.setItem("pokemonTeam2", allTeamsJson);
+            let combined = [...allTeams,...allTeams2];
+            const allTeamsJson = JSON.stringify(combined);
+            localStorage.setItem("pokemonTeam", allTeamsJson);
             refrescarNumeroEquipos();
         } else {
             dato = "Este equipo ya existe y no se añadirá de nuevo.";

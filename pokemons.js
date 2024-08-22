@@ -1,5 +1,4 @@
 let allTeams = JSON.parse(localStorage.getItem("pokemonTeam")) || [];
-let allTeams2=JSON.parse(localStorage.getItem("pokemonTeam2"))||[];
 
 const renderRandom = (arrayElementos) => {
     // Obtener el contenedor donde se mostrarán las tarjetas de los equipos
@@ -35,7 +34,6 @@ const renderRandom = (arrayElementos) => {
         });
     };
 renderRandom(allTeams);
-renderRandom(allTeams2)
 const deleteTeam = (index) => {
     // Eliminar el equipo del array
     Swal.fire({
@@ -63,6 +61,6 @@ const deleteTeam = (index) => {
         localStorage.setItem("pokemonTeam", JSON.stringify(allTeams));
         // Volver a renderizar los equipos actualizados
         renderRandom(allTeams);
-        }
+    }
     });
 };
