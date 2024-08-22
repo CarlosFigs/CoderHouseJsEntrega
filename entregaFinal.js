@@ -198,6 +198,12 @@ const botonAgregar = document.getElementById("agregar");
     });
 //  AQUI FINALIZAN LOS BOTONES DEL PROYECTO
 
+//NUMEROS DE EQUIPOS EN EL LOCAL STORAGE
+const refrescarNumeroEquipos= ()=>{
+    const numberTeams = document.getElementById("numeroEquipos");
+        numberTeams.innerText= `${allTeams.length}`
+}
+refrescarNumeroEquipos();
 // FUNTION TOSTY
 const tosty = (text)=>{
     Toastify({
@@ -217,6 +223,7 @@ const agregarEquipo = ()=>{
     const teamJson = JSON.stringify(allTeams);
     if(teamJson){
         localStorage.setItem("pokemonTeam",teamJson);
+        refrescarNumeroEquipos();
     }
 
 };
