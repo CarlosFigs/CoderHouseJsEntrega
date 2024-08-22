@@ -38,11 +38,31 @@ renderRandom(allTeams);
 
 const deleteTeam = (index) => {
     // Eliminar el equipo del array
-    allTeams.splice(index, 1);
-
-    // Actualizar localStorage
-    localStorage.setItem("pokemonTeam", JSON.stringify(allTeams));
-
-    // Volver a renderizar los equipos actualizados
-    renderRandom(allTeams);
+    Swal.fire({
+        title: "Seguro quiere borrar el equipo?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#5F5F5F",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borrar",
+        cancelButtonText:"Cancelar",
+        background: "#4B0082",
+        color:"#FFDD57",
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire({
+            title: "Deleted!",
+            text: "El equipo ha sido eliminado",
+            icon: "success",
+            background: "#4B0082",
+            color:"#FFDD57",
+            confirmButtonColor: "#5F5F5F",
+        });
+        allTeams.splice(index, 1);
+        // Actualizar localStorage
+        localStorage.setItem("pokemonTeam", JSON.stringify(allTeams));
+        // Volver a renderizar los equipos actualizados
+        renderRandom(allTeams);
+        }
+    });
 };

@@ -40,8 +40,7 @@ const equipoRandom = async ()=>{// ESTO GENERA UN EQUIPO DE 6 POKEMONS RANDOM CO
         multiplesID.add(randomId);
     }
     renderRandom(team);
-    document.getElementById("agregar").style.display= 'block';
-    allTeams.push(team);    
+    document.getElementById("agregar").style.display= 'block';  
 };
 const movimientosRandom = (moves,cantidad)=>{//ESTO GENERA MOVIMIENTOS RANDOM.. PARA POKEMONS INDIVIDUALES Y EQUIPO
     const moveSet=[];
@@ -135,24 +134,10 @@ const renderPokedex = (arrayElementos)=>{// ESTE RENDER SE UTILIZA PARA EL FILTR
 };
 
 //  BOTONES DEL PROYECTO
-// const buttonTosti = document.getElementById("toastify");
-// buttonTosti.addEventListener("click", ()=>{
-//     Toastify({
-//     text: "Su equipo se ha añadido",
-//     duration: 2000, // 3 segundos
-//     position: "right",
-//     gravity:"bottom",
-//     style:{
-//         color: "#ffffff",// Blanco
-//         background: "linear-gradient(to right, #FFDD57,#4B0082)", // Degradado de fondo
-//     },
-// })
-// .showToast();
-// });
 const botonEquipo = document.getElementById("equipo");      //BOTON PARA GENERA 1 EQUIPO DE 6 RANDOM
     botonEquipo.addEventListener("click",()=>{
         equipoRandom();
-        const dato = "Aqui has generado un equipo para pelear"
+        const dato = "Has generado un equipo para pelear"
         tosty(dato);
     });
 const botonRandom = document.getElementById("random");
@@ -189,8 +174,6 @@ const botonRetroceso = document.getElementById("retroceso");
 const botonAgregar = document.getElementById("agregar");
     botonAgregar.addEventListener("click",()=>{         //BOTON PARA AGREGAR AL LOCAL STORAGE EL EQUIPO DE 6
         agregarEquipo();
-        const dato = "Su equipo ha sido agregado"
-        tosty(dato);
     });
     const botonBuscar = document.getElementById("buscar");
     botonBuscar.addEventListener("click",()=>{          //BOTON PARA BUSCAR EN EL INPUT EL POKEMON A ENCONTRAR
@@ -220,12 +203,23 @@ const tosty = (text)=>{
 }
 //ESTA FUNCION AGREGA EL EQUIPO AL LOCAL STORE
 const agregarEquipo = ()=>{
-    const teamJson = JSON.stringify(allTeams);
-    if(teamJson){
-        localStorage.setItem("pokemonTeam",teamJson);
-        refrescarNumeroEquipos();
-    }
-
+        // Verificar si el equipo ya existe en allTeams
+        const teamExistente = allTeams.some(existe => JSON.stringify(existe) === JSON.stringify(team));
+    
+        if (teamExistente) {
+            // Mostrar notificación si el equipo ya existe
+            const dato = "El equipo ya existe";
+            tosty(dato);
+        } else {
+            // Agregar el equipo si no existe y guardar en localStorage
+            allTeams.push(team);
+            const teamJson = JSON.stringify(allTeams);
+            localStorage.setItem("pokemonTeam", teamJson);
+            refrescarNumeroEquipos();
+            
+            const dato = "Su equipo ha sido agregado";
+            tosty(dato);
+        }
 };
 // ESTA FUNCION ES LA QUE SE USA PARA FILTRAR AL POKEMON EN EL INPUT
 const filtrar = async ()=>{
