@@ -3,7 +3,8 @@ let start=1;
 const paginas =20;
 let team =[];
 let allTeams= JSON.parse(localStorage.getItem("pokemonTeam"))||[];
-
+let team2=[];
+let allTeams2=JSON.parse(localStorage.getItem("pokemonTeam2"))||[];
 
 //SOLICITUD AL FETCH
 const pokemonInfo = async (id) => {
@@ -113,10 +114,12 @@ const renderPokedex = (arrayElementos)=>{// ESTE RENDER SE UTILIZA PARA EL FILTR
     pokeContainer.innerHTML = "";
     //Se limpia el contenido del elemento asignadole unos strings vacios.. para evitar duplicado del contenido
     arrayElementos.forEach((elemento) => {
+        
         // se realizara un for each para cada elemento del "array" que estemos pasando como parametro para poder "crear" para cada elemento un nuevo div que contenga lo que necesitemos.. en este caso elementos para una tarjeta..
         let pokeCard = document.createElement("div");
         pokeCard.className = "pokedex";
         pokeCard.innerHTML= `
+        <button onclick="agregarPokemon(${elemento.id})">Agregar pokemon</button>
         <h3>${elemento.name.charAt(0).toUpperCase() + elemento.name.slice(1)}</h3>
         <div>
         <div class ="div-imagen">
@@ -184,7 +187,7 @@ const botonAgregar = document.getElementById("agregar");
 //NUMEROS DE EQUIPOS EN EL LOCAL STORAGE
 const refrescarNumeroEquipos= ()=>{
     const numberTeams = document.getElementById("numeroEquipos");
-        numberTeams.innerText= `${allTeams.length}`
+        numberTeams.innerText= `${allTeams.length+allTeams2.length}`
 }
 refrescarNumeroEquipos();
 // FUNTION TOSTY
@@ -221,6 +224,47 @@ const agregarEquipo = ()=>{
             tosty(dato);
         }
 };
+
+const agregarPokemon = async (id)=>{
+    let pokemon = await pokemonInfo(id)    
+    let moves = movimientosRandom(pokemon.moves,4)
+    let name = pokemon.name;
+    let image = pokemon.sprites.front_shiny;      
+    let poke ={
+        name:name,
+        image:image,
+        moveset:moves,
+    };
+    if (team2.length >= 6) {
+        console.log("Intentando agregar equipo...");
+        
+        // Convertir el equipo en JSON para comparación
+        const team2Json = JSON.stringify(team2);
+
+        // Verificar si el equipo ya existe en allTeams2
+        const equipoExiste = allTeams2.some(team => JSON.stringify(team) === team2Json);
+
+        if (!equipoExiste) {
+            allTeams2.push(team2);  // Agregar el equipo si no existe
+            dato = "Equipo añadido";
+            tosty(dato);
+            const allTeamsJson = JSON.stringify(allTeams2);
+            localStorage.setItem("pokemonTeam2", allTeamsJson);
+            refrescarNumeroEquipos();
+        } else {
+            dato = "Este equipo ya existe y no se añadirá de nuevo.";
+            tosty(dato);
+        }
+
+        // Reiniciar team2 después de agregarlo
+        team2 = [];
+    } else {
+        let resta = 6 - team2.length;
+        const dato = `Te falta añadir ${resta} pokemones`;
+        tosty(dato);
+        team2.push(poke);
+    }
+};
 // ESTA FUNCION ES LA QUE SE USA PARA FILTRAR AL POKEMON EN EL INPUT
 const filtrar = async ()=>{
     const inputBusqueda = document.getElementById(`inputSearch`);
@@ -229,7 +273,6 @@ const filtrar = async ()=>{
             const pokemonFiltrado = await pokemonInfo(valor);
             const pokemon = [];
             pokemon.push(pokemonFiltrado);
-            console.log(pokemon);
             renderPokedex(pokemon);
             inputBusqueda.value = "";
             const dato = `Ha encontrado a ${valor}`;
